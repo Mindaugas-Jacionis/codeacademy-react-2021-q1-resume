@@ -1,0 +1,58 @@
+:root {
+  --color-green: #7abcac;
+  --color-yellow: #d8da79;
+  --color-redish: #c29486;
+  --color-black: #222222;
+  --color-white: #eeeeee;
+  --color-grey: #dcdcdc;
+
+  --size-container: 1080px;
+}
+
+.App {
+  max-width: var(--size-container);
+  width: 100%;
+  min-height: 100vh;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  margin-top: 30px;
+  padding-bottom: 72px;
+}
+
+.navigation {
+  position: absolute;
+  z-index: -1;
+  max-width: var(--size-container);
+  width: 100%;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 16px 24px;
+  background: var(--color-green);
+  box-sizing: border-box;
+}
+
+.header__name-container {
+  margin-top: 62px;
+  display: inline-block;
+  border: 4px var(--color-black) solid;
+  padding: 48px 128px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.header__name-title {
+  font-size: 24px;
+  line-height: 28px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-top: 16px;
+  background: var(--color-black);
+  padding: 0 24px;
+  color: var(--color-white);
+  display: inline-block;
+}
