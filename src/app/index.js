@@ -2,6 +2,9 @@ import Pill from "./components/Pill";
 import ContentBox from "./components/ContentBox";
 import Divider from "./components/Divider";
 import Select from "./components/Select";
+import Footer from "./components/Footer";
+
+import translations from "./translations";
 
 import "./index.css";
 
@@ -65,16 +68,16 @@ function App() {
             <p>Wizard</p>
           </div>
         </ContentBox>
-        <ContentBox title="Personal Skills">
-          <Pill color="green">Teamwork</Pill>
-          <Pill color="yellow">Communication</Pill>
-          <Pill color="redish">Organisation</Pill>
-          <Pill>Leadership</Pill>
+        <ContentBox title={translations.en.personalSkills.title}>
+          {translations.en.personalSkills.skills.map(({ text, level }) => (
+            <Pill color={level}>{text}</Pill>
+          ))}
         </ContentBox>
         <ContentBox>
           <Pill color="green">HTML</Pill>
         </ContentBox>
       </main>
+      <Footer lang="en" />
     </div>
   );
 }
