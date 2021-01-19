@@ -1,9 +1,15 @@
 import "./index.css";
 
-function Divider({ isFancy }) {
-  const className = isFancy ? "divider--fancy" : "";
+function Divider({ isShort, isFancy, className }) {
+  const classes = [
+    isFancy ? "divider--fancy" : "",
+    isShort ? "divider--short" : "",
+    className,
+  ]
+    .filter(Boolean)
+    .join(" ");
 
-  return <hr className={`divider ${className}`} />;
+  return <hr className={`divider ${classes}`} />;
 }
 
 export default Divider;

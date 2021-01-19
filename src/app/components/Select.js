@@ -1,10 +1,14 @@
-function Select({ options = [] }) {
+function Select({ options = [], onChange, value }) {
+  const props = value ? { value } : {};
+
+  const onSelect = (e) => {
+    if (onChange) {
+      onChange(e.target.value);
+    }
+  };
+
   return (
-    <select
-      onChange={(event) => {
-        console.log(event.target.value);
-      }}
-    >
+    <select {...props} value={value} onChange={onSelect}>
       {options.map((optionData) => (
         <option key={optionData.value} {...optionData} />
       ))}

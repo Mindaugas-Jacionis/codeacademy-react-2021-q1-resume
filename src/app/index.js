@@ -1,19 +1,27 @@
-import Pill from "./components/Pill";
-import ContentBox from "./components/ContentBox";
-import Divider from "./components/Divider";
-import Select from "./components/Select";
-import Footer from "./components/Footer";
+import { useState } from "react";
 
+import { Pill, Divider, ContentBox, Select, Footer } from "./components";
 import translations from "./translations";
-
 import "./index.css";
 
 function App() {
+  const [language, setLanguage] = useState("en");
+  const {
+    header,
+    links,
+    about,
+    education,
+    personalSkills,
+    technicalSkills,
+  } = translations[language];
+
   return (
     <div className="App">
       <header className="header">
         <div className="navigation">
           <Select
+            value={language}
+            onChange={setLanguage}
             options={[
               { value: "en", children: "English" },
               { value: "lt", children: "Lietuviu" },
@@ -22,62 +30,50 @@ function App() {
         </div>
         <div className="header__name-container">
           <h1>Sophie Alpert</h1>
-          <span className="header__name-title">Programmer</span>
+          <span className="header__name-title">{header.title}</span>
         </div>
       </header>
-      <main>
-        <ContentBox title="Link">
-          <ul>
-            <li>
-              <p>linkedin</p>
-            </li>
-            <li>
-              <p>github</p>
-            </li>
-            <li>
-              <p>twitter</p>
-            </li>
-            <li>
-              <p>blog</p>
-            </li>
-          </ul>
+      <main className="grid grid-cols-3 gap-3 mx-4">
+        <ContentBox title={links.title}>
+          {links.values && !!links.values.length && (
+            <ul>
+              {links.values.map(({ href, text }) => (
+                <li>
+                  <a href={href} target="_blank" rel="noreferrer noopener">
+                    {text}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )}
         </ContentBox>
-        <ContentBox title="About Me">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ut
-            justo libero. Vestibulum vitae mattis diam. Vivamus eleifend diam
-            vel tempor lacinia. Suspendisse non augue egestas, dapibus justo et,
-            lobortis ex. Nullam tortor diam, venenatis at enim a, lacinia
-            porttitor erat. Vivamus tempor dictum leo id aliquam. Praesent elit
-            lacus, tempus ac vehicula in, imperdiet dapibus elit. Nullam
-            scelerisque euismod leo id vestibulum. Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit. Maecenas ut justo libero. Vestibulum
-            vitae mattis diam.
-          </p>
+        <ContentBox className="col-span-2" title={about.title}>
+          <p>{about.text}</p>
         </ContentBox>
-        <ContentBox title="Education">
-          <div>
-            <p>Hogwartz</p>
-            <p>2009-2013</p>
-            <p>Wizard</p>
-          </div>
-          <Divider />
-          <div>
-            <p>Hogwartz</p>
-            <p>2009-2013</p>
-            <p>Wizard</p>
-          </div>
+        <ContentBox title={education.title}>
+          {education.schools.map(({ name, year, degree }, i, arr) => (
+            <>
+              <div>
+                <p>{name}</p>
+                <p>{year}</p>
+                <p>{degree}</p>
+              </div>
+              {i !== arr.length - 1 && <Divider isShort />}
+            </>
+          ))}
         </ContentBox>
-        <ContentBox title={translations.en.personalSkills.title}>
-          {translations.en.personalSkills.skills.map(({ text, level }) => (
+        <ContentBox title={personalSkills.title}>
+          {personalSkills.skills.map(({ text, level }) => (
             <Pill color={level}>{text}</Pill>
           ))}
         </ContentBox>
-        <ContentBox>
-          <Pill color="green">HTML</Pill>
+        <ContentBox title={technicalSkills.title}>
+          {technicalSkills.skills.map(({ text, level }) => (
+            <Pill color={level}>{text}</Pill>
+          ))}
         </ContentBox>
       </main>
-      <Footer lang="en" />
+      <Footer language={language} />
     </div>
   );
 }

@@ -17,3 +17,7 @@
   border: none;
   background: var(--color-green);
 }
+
+.divider--short {
+  width: max(30%, 150px);
+}

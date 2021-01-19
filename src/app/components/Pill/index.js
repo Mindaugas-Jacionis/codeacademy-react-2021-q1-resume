@@ -6,7 +6,7 @@ function Pill({ children, color, id }) {
     : "grey";
 
   return (
-    <div id={id} className={`pill pill--${asignedColor} m-1`}>
+    <div id={id} className={`pill pill--${asignedColor} mr-1 mb-1`}>
       <p>{children}</p>
     </div>
   );
