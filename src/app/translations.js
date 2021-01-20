@@ -1,5 +1,8 @@
 export default {
   en: {
+    errors: {
+      genericContent: "At this moment this content is not available",
+    },
     header: {
       title: "Programmer",
     },
@@ -46,6 +49,9 @@ export default {
     footer: "Here is very awesome Footer 🦶",
   },
   lt: {
+    errors: {
+      genericContent: "Šiuo metu turinys nepasiekiamas",
+    },
     header: {
       title: "Programuotojas",
     },

@@ -5,6 +5,9 @@ function Pill({ children, color, id }) {
     ? color
     : "grey";
 
+  // uncoment line bellow to see ContentBox error boundary in action
+  // throw new Error("Pill is broken now 😭");
+
   return (
     <div id={id} className={`pill pill--${asignedColor} mr-1 mb-1`}>
       <p>{children}</p>
