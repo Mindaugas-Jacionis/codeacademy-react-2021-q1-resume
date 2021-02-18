@@ -1,13 +1,7 @@
 import { Component, Fragment } from "react";
+import { Pill, Divider } from "@codeacademy/storybook-components";
 
-import {
-  Pill,
-  Divider,
-  ContentBox,
-  Select,
-  Footer,
-  ErrorBoundary,
-} from "./components";
+import { ContentBox, Select, Footer, ErrorBoundary } from "./components";
 import translations from "./translations";
 import "./index.css";
 
@@ -83,14 +77,14 @@ class App extends Component {
             </ContentBox>
             <ContentBox title={personalSkills.title} language={language}>
               {personalSkills.skills.map(({ text, level }, index) => (
-                <Pill key={index} color={level}>
+                <Pill className="mr-1 mb-1" key={index} color={level}>
                   {text}
                 </Pill>
               ))}
             </ContentBox>
             <ContentBox title={technicalSkills.title} language={language}>
               {technicalSkills.skills.map(({ text, level }, index) => (
-                <Pill key={index} color={level}>
+                <Pill className="mr-1 mb-1" key={index} color={level}>
                   {text}
                 </Pill>
               ))}
