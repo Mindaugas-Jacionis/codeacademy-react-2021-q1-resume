@@ -1,15 +1,16 @@
+import { Divider } from "@codeacademy/storybook-components";
+
 import ErrorComponent from "./components/ErrorComponent";
 import ErrorBoundary from "../ErrorBoundary";
-import Divider from "../Divider";
 
 import "./index.css";
 
 function ContentBox({
   children,
   title,
-  className = "",
-  contentClassName = "",
-  language = "en",
+  className,
+  contentClassName,
+  language,
 }) {
   return (
     <ErrorBoundary component={() => <ErrorComponent language={language} />}>
@@ -23,5 +24,13 @@ function ContentBox({
     </ErrorBoundary>
   );
 }
+
+ContentBox.displayName = "Content";
+
+ContentBox.defaultProps = {
+  language: "lt",
+  className: "",
+  contentClassName: "",
+};
 
 export default ContentBox;
