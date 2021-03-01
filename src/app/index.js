@@ -6,9 +6,12 @@ import translations from "./translations";
 import "./index.css";
 
 class App extends Component {
-  state = {
-    language: "en",
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      language: "en",
+    };
+  }
 
   componentDidCatch(error, info) {
     console.log("componentDidCatch", { error, info });
