@@ -1,0 +1,1 @@
+type LanguageValues = "en" | "lt";
